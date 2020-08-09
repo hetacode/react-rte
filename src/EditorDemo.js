@@ -22,6 +22,8 @@ export default class EditorDemo extends Component {
   props: Props;
   state: State;
 
+  toolbarRef = React.createRef()
+
   constructor() {
     super(...arguments);
     autobind(this);
@@ -34,7 +36,7 @@ export default class EditorDemo extends Component {
 
   render() {
     let {value, format} = this.state;
-
+console.log(this.toolbarRef)
     return (
       <div className="editor-demo">
         <div className="row">
@@ -43,6 +45,7 @@ export default class EditorDemo extends Component {
         <div className="row">
           <RichTextEditor
             value={value}
+            toolbarRef={this.toolbarRef}
             onChange={this._onChange}
             className="react-rte-demo"
             placeholder="Tell a story"

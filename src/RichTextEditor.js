@@ -45,7 +45,7 @@ const styleMap = {
 type ChangeHandler = (value: EditorValue) => any;
 
 type Props = {
-  toolbarRef?: React.LegacyRef<EditorToolbar>;
+  toolbarRef?: React.ElementRef<HTMLDivElement>;
   className?: string;
   toolbarClassName?: string;
   editorClassName?: string;
@@ -105,6 +105,7 @@ export default class RichTextEditor extends Component {
       keyBindingFn,
       rootStyle,
       toolbarStyle,
+      toolbarRef,
       editorStyle,
       ...otherProps // eslint-disable-line comma-dangle
     } = this.props;
@@ -124,7 +125,7 @@ export default class RichTextEditor extends Component {
     if (!readOnly) {
       editorToolbar = (
         <EditorToolbar
-          ref={this.props.toolbarRef}
+          toolbarRootRef={toolbarRef}
           rootStyle={toolbarStyle}
           isOnBottom={toolbarOnBottom}
           className={toolbarClassName}
